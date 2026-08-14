@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Ministarstvo rada i socijalnog staranja",
+    "url": "https://www.gov.me/mrss",
+    "order": 1
+  },
+  {
+    "title": "Uprava za inspekcijske poslove",
+    "url": "https://www.gov.me/uip",
+    "order": 2
+  },
+  {
+    "title": "EU-OSHA — Evropska agencija za bezbjednost i zdravlje na radu",
+    "url": "https://osha.europa.eu/",
+    "order": 3
+  },
+  {
+    "title": "Međunarodna organizacija rada (ILO)",
+    "url": "https://www.ilo.org/",
+    "order": 4
+  },
+  {
+    "title": "Privredna komora Crne Gore",
+    "url": "https://www.privrednakomora.me/",
+    "order": 5
+  }
+]

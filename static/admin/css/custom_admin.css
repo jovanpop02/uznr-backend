@@ -1,0 +1,223 @@
+:root,
+html[data-theme="light"],
+html[data-theme="dark"] {
+  --primary: #1f6f43;
+  --primary-fg: #ffffff;
+  --header-bg: #14522f;
+  --header-color: #ffffff;
+  --header-link-color: #ffffff;
+  --header-branding-color: #ffffff;
+  --breadcrumbs-bg: #1f6f43;
+  --breadcrumbs-fg: #e8f3ec;
+  --breadcrumbs-link-fg: #ffffff;
+  --link-fg: #1f6f43;
+  --link-hover-color: #14522f;
+  --link-selected-fg: #1f6f43;
+  --button-bg: #1f6f43;
+  --button-hover-bg: #14522f;
+  --default-button-bg: #14522f;
+  --default-button-hover-bg: #0d3a21;
+  --selected-row: #e8f3ec;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+}
+
+#branding h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#branding h1 img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+div.breadcrumbs {
+  background: #14522f;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: #1f6f43;
+}
+
+/* ---------- General polish ---------- */
+
+#content {
+  padding-top: 24px;
+}
+
+.module {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+.module h2,
+.module caption {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 10px 14px;
+}
+
+fieldset.module {
+  border: 1px solid #e3e8e5;
+}
+
+fieldset.module h2 {
+  border-radius: 0;
+}
+
+.form-row {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef1ef;
+}
+
+.form-row:last-child {
+  border-bottom: none;
+}
+
+.form-row label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.help,
+p.help,
+.form-row div.help {
+  font-size: 0.78rem;
+  color: #6b7570;
+  margin-top: 4px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+  border-radius: 6px !important;
+  border: 1px solid #d7ddda !important;
+  padding: 7px 10px !important;
+}
+
+textarea {
+  line-height: 1.5;
+}
+
+.submit-row {
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.submit-row input.default {
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* ---------- List view thumbnails ---------- */
+
+.list-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.list-thumb--logo {
+  object-fit: contain;
+  background: #fff;
+  padding: 2px;
+  border: 1px solid #eef1ef;
+}
+
+#result_list td:first-child {
+  width: 60px;
+}
+
+/* ---------- Gallery inline (Fotografije) ---------- */
+
+.tabular.inline-related:has(.news-gallery-inline) {
+  border-radius: 0;
+}
+
+.inline-group .tabular td.field-preview {
+  width: 56px;
+  padding: 5px !important;
+}
+
+.gallery-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.news-gallery-inline table {
+  border-collapse: separate;
+  border-spacing: 0 3px;
+  table-layout: fixed;
+}
+
+.news-gallery-inline th,
+.news-gallery-inline td {
+  vertical-align: middle !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* row header repeats str(obj) — hide it, the thumbnail is the identifier now.
+   Django's own forms.css absolutely-positions td.original p to float over the
+   row, so !important is needed to beat it regardless of load order. */
+.news-gallery-inline td.original,
+.news-gallery-inline th.original {
+  display: none !important;
+}
+
+.news-gallery-inline .field-order input {
+  width: 44px !important;
+  padding: 4px 6px !important;
+}
+
+.news-gallery-inline .field-image {
+  max-width: 190px;
+}
+
+.news-gallery-inline .field-image p.file-upload {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.news-gallery-inline .field-image p.file-upload a {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.news-gallery-inline .field-image input[type="file"] {
+  font-size: 0.7rem;
+  max-width: 150px;
+}
+
+.news-gallery-inline .add-row {
+  padding: 8px 14px !important;
+}
