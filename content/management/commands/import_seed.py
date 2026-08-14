@@ -25,9 +25,15 @@ class Command(BaseCommand):
     help = 'Import seed news/members JSON (with real scraped image URLs) into the database.'
 
     def handle(self, *args, **options):
-        self.import_news()
-        self.import_members()
-        self.import_important_links()
+        # Members/links are cheap (no per-item image downloads to wait on) and
+        # matter for the homepage sidebar/members section, so seed them before
+        # news, whose thumbnail/gallery downloads can take a long time and
+        # must never block the rest of the seed from running.
+        for step in (self.import_members, self.import_important_links, self.import_news):
+            try:
+                step()
+            except Exception as exc:
+                self.stderr.write(self.style.ERROR(f'{step.__name__} failed: {exc}'))
 
     def import_news(self):
         path = DATA_DIR / 'news.json'
