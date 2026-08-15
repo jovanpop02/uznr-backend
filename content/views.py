@@ -1,7 +1,12 @@
 from rest_framework import generics
 
-from .models import ImportantLink, Member, NewsItem
-from .serializers import ImportantLinkSerializer, MemberSerializer, NewsItemSerializer
+from .models import Announcement, ImportantLink, Member, NewsItem
+from .serializers import AnnouncementSerializer, ImportantLinkSerializer, MemberSerializer, NewsItemSerializer
+
+
+class AnnouncementListView(generics.ListAPIView):
+    queryset = Announcement.objects.all()
+    serializer_class = AnnouncementSerializer
 
 
 class NewsListView(generics.ListAPIView):

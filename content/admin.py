@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import ImportantLink, Member, NewsImage, NewsItem
+from .models import Announcement, ImportantLink, Member, NewsImage, NewsItem
 
 
 class NewsImageInline(admin.TabularInline):
@@ -47,6 +47,38 @@ class NewsItemAdmin(admin.ModelAdmin):
         if not obj.thumbnail:
             return '—'
         return format_html('<img src="{}" class="list-thumb" alt="" />', obj.thumbnail.url)
+
+
+@admin.register(Announcement)
+class AnnouncementAdmin(admin.ModelAdmin):
+    list_display = ('thumb', 'title', 'status', 'date')
+    list_display_links = ('thumb', 'title')
+    list_filter = ('is_open', 'date')
+    search_fields = ('title', 'excerpt')
+
+    fieldsets = (
+        ('Osnovni podaci', {
+            'fields': ('title', 'date', 'is_open'),
+        }),
+        ('Sadržaj', {
+            'fields': ('excerpt', 'photo'),
+        }),
+        ('Link (opciono)', {
+            'fields': ('link', 'link_label'),
+        }),
+    )
+
+    @admin.display(description='')
+    def thumb(self, obj):
+        if not obj.photo:
+            return '—'
+        return format_html('<img src="{}" class="list-thumb" alt="" />', obj.photo.url)
+
+    @admin.display(description='Status')
+    def status(self, obj):
+        if obj.is_open:
+            return format_html('<span style="color: #2f8f45; font-weight: 600;">Otvoreno</span>')
+        return format_html('<span style="color: #6b7a72;">Isteklo</span>')
 
 
 @admin.register(ImportantLink)

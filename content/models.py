@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import F
 
 
 class NewsItem(models.Model):
@@ -50,6 +51,24 @@ class ImportantLink(models.Model):
             raise ValidationError('Unesite veb adresu ili otpremite fajl.')
         if self.url and self.file:
             raise ValidationError('Popunite samo jedno: veb adresu ili fajl, ne oboje.')
+
+    def __str__(self):
+        return self.title
+
+
+class Announcement(models.Model):
+    title = models.CharField(max_length=300, verbose_name='Naslov')
+    excerpt = models.TextField(verbose_name='Tekst oglasa')
+    date = models.DateField(blank=True, null=True, verbose_name='Datum objave', help_text='Ostavi prazno ako datum nije poznat — oglas će se prikazati bez datuma.')
+    photo = models.ImageField(upload_to='oglasi/', blank=True, null=True, verbose_name='Fotografija')
+    link = models.URLField(blank=True, verbose_name='Link', help_text='Opciono — npr. link za prijavu ili više informacija.')
+    link_label = models.CharField(max_length=100, blank=True, verbose_name='Tekst linka', help_text='Npr. "Prijava putem portala eUprava". Ostavi prazno za podrazumijevani tekst.')
+    is_open = models.BooleanField(default=True, verbose_name='Aktivan (otvoren)', help_text='Isključi kada rok istekne ili se pozicija popuni — oglas ostaje na sajtu, ali se označava kao "Isteklo".')
+
+    class Meta:
+        ordering = ['-is_open', F('date').desc(nulls_last=True), '-id']
+        verbose_name = 'Oglas'
+        verbose_name_plural = 'Oglasi'
 
     def __str__(self):
         return self.title

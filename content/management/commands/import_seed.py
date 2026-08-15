@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 
-from content.models import ImportantLink, Member, NewsImage, NewsItem
+from content.models import Announcement, ImportantLink, Member, NewsImage, NewsItem
 
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / 'seed_data'
 
@@ -29,7 +29,7 @@ class Command(BaseCommand):
         # matter for the homepage sidebar/members section, so seed them before
         # news, whose thumbnail/gallery downloads can take a long time and
         # must never block the rest of the seed from running.
-        for step in (self.import_members, self.import_important_links, self.import_news):
+        for step in (self.import_members, self.import_important_links, self.import_announcements, self.import_news):
             try:
                 step()
             except Exception as exc:
@@ -66,6 +66,33 @@ class Command(BaseCommand):
                         self.stderr.write(f"  gallery image failed for {item['slug']} ({url}): {exc}")
             created += 1
         self.stdout.write(self.style.SUCCESS(f'Imported {created} news items'))
+
+    def import_announcements(self):
+        path = DATA_DIR / 'announcements.json'
+        if not path.exists():
+            return
+        items = json.loads(path.read_text(encoding='utf-8'))
+        created = 0
+        for item in items:
+            obj, _ = Announcement.objects.update_or_create(
+                title=item['title'],
+                defaults={
+                    'excerpt': item['excerpt'],
+                    'date': item.get('date'),
+                    'link': item.get('link', ''),
+                    'link_label': item.get('link_label', ''),
+                    'is_open': item.get('is_open', True),
+                },
+            )
+            photo_url = item.get('photo')
+            if photo_url and not obj.photo:
+                try:
+                    data = download(photo_url)
+                    obj.photo.save(filename_from_url(photo_url), ContentFile(data), save=True)
+                except Exception as exc:
+                    self.stderr.write(f"  photo failed for {item['title']}: {exc}")
+            created += 1
+        self.stdout.write(self.style.SUCCESS(f'Imported {created} announcements'))
 
     def import_members(self):
         path = DATA_DIR / 'members.json'
