@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Announcement, ImportantLink, Member, NewsImage, NewsItem
+from .models import Announcement, AnnouncementLink, ImportantLink, Member, NewsImage, NewsItem
 
 
 class NewsImageInline(admin.TabularInline):
@@ -49,22 +49,31 @@ class NewsItemAdmin(admin.ModelAdmin):
         return format_html('<img src="{}" class="list-thumb" alt="" />', obj.thumbnail.url)
 
 
+class AnnouncementLinkInline(admin.TabularInline):
+    model = AnnouncementLink
+    extra = 1
+    fields = ('title', 'url', 'file', 'order')
+
+
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
-    list_display = ('thumb', 'title', 'status', 'date')
+    list_display = ('thumb', 'title', 'status', 'date', 'order')
     list_display_links = ('thumb', 'title')
     list_filter = ('is_open', 'date')
     search_fields = ('title', 'excerpt')
+    ordering = ('order', 'id')
+    inlines = [AnnouncementLinkInline]
 
     fieldsets = (
         ('Osnovni podaci', {
-            'fields': ('title', 'date', 'is_open'),
+            'fields': ('title', 'date', 'is_open', 'order'),
         }),
         ('Sadržaj', {
             'fields': ('excerpt', 'photo'),
         }),
-        ('Link (opciono)', {
+        ('Istaknuti link u tekstu (opciono)', {
             'fields': ('link', 'link_label'),
+            'description': 'Za jednu riječ/frazu koja postaje link unutar teksta oglasa (npr. "eUprave").',
         }),
     )
 

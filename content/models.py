@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models import F
 
 
 class NewsItem(models.Model):
@@ -64,11 +63,34 @@ class Announcement(models.Model):
     link = models.URLField(blank=True, verbose_name='Link', help_text='Opciono — npr. link za prijavu ili više informacija.')
     link_label = models.CharField(max_length=100, blank=True, verbose_name='Tekst linka', help_text='Npr. "Prijava putem portala eUprava". Ostavi prazno za podrazumijevani tekst.')
     is_open = models.BooleanField(default=True, verbose_name='Aktivan (otvoren)', help_text='Isključi kada rok istekne ili se pozicija popuni — oglas ostaje na sajtu, ali se označava kao "Isteklo".')
+    order = models.PositiveIntegerField(default=0, verbose_name='Redoslijed', help_text='Manji broj = prikazuje se prije. Prvi oglas (najmanji broj) se prikazuje istaknuto, u većoj kartici.')
 
     class Meta:
-        ordering = ['-is_open', F('date').desc(nulls_last=True), '-id']
+        ordering = ['order', 'id']
         verbose_name = 'Oglas'
         verbose_name_plural = 'Oglasi'
+
+    def __str__(self):
+        return self.title
+
+
+class AnnouncementLink(models.Model):
+    announcement = models.ForeignKey(Announcement, related_name='links', on_delete=models.CASCADE)
+    title = models.CharField(max_length=200, verbose_name='Naziv')
+    url = models.URLField(blank=True, verbose_name='Veb adresa', help_text='Za link ka spoljnoj stranici.')
+    file = models.FileField(upload_to='oglasi_dokumenti/', blank=True, verbose_name='Fajl', help_text='Za dokument koji se otprema i čuva na našem sajtu (PDF i sl.). Popuni ili ovo, ili adresu iznad — ne oboje.')
+    order = models.PositiveIntegerField(default=0, verbose_name='Redoslijed', help_text='Manji broj = prikazuje se prije.')
+
+    class Meta:
+        ordering = ['order', 'id']
+        verbose_name = 'Dokument uz oglas'
+        verbose_name_plural = 'Dokumenti uz oglas'
+
+    def clean(self):
+        if not self.url and not self.file:
+            raise ValidationError('Unesite veb adresu ili otpremite fajl.')
+        if self.url and self.file:
+            raise ValidationError('Popunite samo jedno: veb adresu ili fajl, ne oboje.')
 
     def __str__(self):
         return self.title

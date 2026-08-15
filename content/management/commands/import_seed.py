@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 
-from content.models import Announcement, ImportantLink, Member, NewsImage, NewsItem
+from content.models import Announcement, AnnouncementLink, ImportantLink, Member, NewsImage, NewsItem
 
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / 'seed_data'
 
@@ -73,7 +73,7 @@ class Command(BaseCommand):
             return
         items = json.loads(path.read_text(encoding='utf-8'))
         created = 0
-        for item in items:
+        for index, item in enumerate(items):
             obj, _ = Announcement.objects.update_or_create(
                 title=item['title'],
                 defaults={
@@ -82,6 +82,7 @@ class Command(BaseCommand):
                     'link': item.get('link', ''),
                     'link_label': item.get('link_label', ''),
                     'is_open': item.get('is_open', True),
+                    'order': item.get('order', index),
                 },
             )
             photo_url = item.get('photo')
@@ -91,6 +92,20 @@ class Command(BaseCommand):
                     obj.photo.save(filename_from_url(photo_url), ContentFile(data), save=True)
                 except Exception as exc:
                     self.stderr.write(f"  photo failed for {item['title']}: {exc}")
+            links = item.get('links') or []
+            if links and not obj.links.exists():
+                for order, link_spec in enumerate(links):
+                    try:
+                        if link_spec.get('file_url'):
+                            data = download(link_spec['file_url'])
+                            doc = AnnouncementLink(announcement=obj, title=link_spec['title'], order=order)
+                            doc.file.save(filename_from_url(link_spec['file_url']), ContentFile(data), save=True)
+                        else:
+                            AnnouncementLink.objects.create(
+                                announcement=obj, title=link_spec['title'], url=link_spec['url'], order=order
+                            )
+                    except Exception as exc:
+                        self.stderr.write(f"  link failed for {item['title']} ({link_spec.get('title')}): {exc}")
             created += 1
         self.stdout.write(self.style.SUCCESS(f'Imported {created} announcements'))
 

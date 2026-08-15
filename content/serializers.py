@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Announcement, ImportantLink, Member, NewsImage, NewsItem
+from .models import Announcement, AnnouncementLink, ImportantLink, Member, NewsImage, NewsItem
 
 
 class NewsImageSerializer(serializers.ModelSerializer):
@@ -32,12 +32,28 @@ class NewsItemSerializer(serializers.ModelSerializer):
         return request.build_absolute_uri(url) if request else url
 
 
+class AnnouncementLinkSerializer(serializers.ModelSerializer):
+    href = serializers.SerializerMethodField()
+
+    class Meta:
+        model = AnnouncementLink
+        fields = ['title', 'href']
+
+    def get_href(self, obj):
+        if obj.file:
+            request = self.context.get('request')
+            url = obj.file.url
+            return request.build_absolute_uri(url) if request else url
+        return obj.url
+
+
 class AnnouncementSerializer(serializers.ModelSerializer):
     photo = serializers.SerializerMethodField()
+    links = AnnouncementLinkSerializer(many=True, read_only=True)
 
     class Meta:
         model = Announcement
-        fields = ['id', 'title', 'excerpt', 'date', 'photo', 'link', 'link_label', 'is_open']
+        fields = ['id', 'title', 'excerpt', 'date', 'photo', 'link', 'link_label', 'is_open', 'links']
 
     def get_photo(self, obj):
         if not obj.photo:
