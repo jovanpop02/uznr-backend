@@ -1,4 +1,5 @@
 import json
+import re
 import urllib.request
 from pathlib import Path
 from urllib.parse import urlparse
@@ -10,6 +11,9 @@ from content.models import Announcement, AnnouncementLink, ImportantLink, Member
 
 DATA_DIR = Path(__file__).resolve().parent.parent.parent / 'seed_data'
 
+SIZE_SUFFIX = re.compile(r'-\d+x\d+$')
+ROTATED_SUFFIX = re.compile(r'-rotated$')
+
 
 def download(url):
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -19,6 +23,17 @@ def download(url):
 
 def filename_from_url(url):
     return Path(urlparse(url).path).name or 'file'
+
+
+def photo_key(name):
+    """Identity of the underlying photo, ignoring WordPress size variants.
+
+    The old site serves one photo at several sizes, so `foo-876x600.jpg` (used
+    as the thumbnail) and `foo-1536x1052.jpg` (in the gallery) are the same
+    picture and would otherwise show twice on the article page.
+    """
+    stem = Path(name or '').stem.lower()
+    return ROTATED_SUFFIX.sub('', SIZE_SUFFIX.sub('', stem))
 
 
 class Command(BaseCommand):
@@ -65,7 +80,33 @@ class Command(BaseCommand):
                     except Exception as exc:
                         self.stderr.write(f"  gallery image failed for {item['slug']} ({url}): {exc}")
             created += 1
-        self.stdout.write(self.style.SUCCESS(f'Imported {created} news items'))
+
+        removed = self.dedupe_gallery_photos()
+        self.stdout.write(self.style.SUCCESS(
+            f'Imported {created} news items ({removed} duplicate photos removed)'
+        ))
+
+    def dedupe_gallery_photos(self):
+        """Drop gallery photos that repeat the thumbnail, or each other.
+
+        Runs on every seed rather than only on first import: galleries are
+        skipped once an item already has photos, so an environment seeded
+        before the JSON was cleaned would otherwise keep its duplicates
+        forever. Idempotent — a clean database loses nothing.
+        """
+        removed = 0
+        for item in NewsItem.objects.all().prefetch_related('images'):
+            seen = set()
+            if item.thumbnail:
+                seen.add(photo_key(item.thumbnail.name))
+            for img in item.images.all():
+                key = photo_key(img.image.name)
+                if key in seen:
+                    img.delete()
+                    removed += 1
+                else:
+                    seen.add(key)
+        return removed
 
     def import_announcements(self):
         path = DATA_DIR / 'announcements.json'
