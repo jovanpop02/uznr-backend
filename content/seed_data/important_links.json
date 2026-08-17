@@ -1,27 +1,40 @@
 [
-  {
-    "title": "Ministarstvo rada i socijalnog staranja",
-    "url": "https://www.gov.me/mrss",
-    "order": 1
-  },
-  {
-    "title": "Uprava za inspekcijske poslove",
-    "url": "https://www.gov.me/uip",
-    "order": 2
-  },
-  {
-    "title": "EU-OSHA — Evropska agencija za bezbjednost i zdravlje na radu",
-    "url": "https://osha.europa.eu/",
-    "order": 3
-  },
-  {
-    "title": "Međunarodna organizacija rada (ILO)",
-    "url": "https://www.ilo.org/",
-    "order": 4
-  },
-  {
-    "title": "Privredna komora Crne Gore",
-    "url": "https://www.privrednakomora.me/",
-    "order": 5
-  }
+ {
+  "title": "Spisak koordinatora za zaštitu i zdravlje na radu",
+  "order": 0
+ },
+ {
+  "title": "Spisak ovlašćenih organizacija za poslove zaštite i zdravlja na radu",
+  "order": 1
+ },
+ {
+  "title": "Ministarstvo rada i socijalnog dijaloga",
+  "order": 2,
+  "url": "https://www.gov.me/mrzs"
+ },
+ {
+  "title": "EU-OSHA – Evropska agencija za bezbjednost i zdravlje na radu",
+  "order": 3,
+  "url": "https://osha.europa.eu/en"
+ },
+ {
+  "title": "Međunarodna organizacija rada (ILO)",
+  "order": 4,
+  "url": "https://www.ilo.org/"
+ },
+ {
+  "title": "Ministarstvo ekonomskog razvoja",
+  "order": 5,
+  "url": "https://www.gov.me/mek"
+ },
+ {
+  "title": "ENETOSH",
+  "order": 6,
+  "url": "https://www.enetosh.net/"
+ },
+ {
+  "title": "IOSH",
+  "order": 7,
+  "url": "https://iosh.com/"
+ }
 ]

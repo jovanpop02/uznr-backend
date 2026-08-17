@@ -133,6 +133,18 @@ class RowDeleteMixin:
     what else would go with it.
     """
 
+    def get_list_display(self, request):
+        """Drop the column for anyone who may not delete.
+
+        Display methods never see the request, so the check has to happen here.
+        Leaving the link visible to a read-only account would offer an action
+        that only ends in a permission error.
+        """
+        columns = super().get_list_display(request)
+        if self.has_delete_permission(request):
+            return columns
+        return tuple(column for column in columns if column != 'delete_link')
+
     @admin.display(description='')
     def delete_link(self, obj):
         url = reverse(

@@ -10,7 +10,7 @@ services:
     # The seeding steps use `;` and `|| true` rather than `&&`: this database is
     # rebuilt from nothing on every deploy, and a seed that fails must cost its
     # own content, never the boot. gunicorn has to start either way.
-    startCommand: "python manage.py migrate && python manage.py import_pages; python manage.py import_projekti_biblioteka --apply || true; (python manage.py import_seed &) ; gunicorn config.wsgi --log-file -"
+    startCommand: "python manage.py migrate && python manage.py import_pages; python manage.py import_projekti_biblioteka --apply || true; python manage.py ensure_admin_user || true; (python manage.py import_seed &) ; gunicorn config.wsgi --log-file -"
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -46,3 +46,18 @@ services:
         value: "https://uznr.netlify.app"
       - key: BACKEND_URL
         sync: false
+
+      # Admin account, created at boot because the free plan has no shell.
+      # Set the values in the Render dashboard; sync:false keeps them out of
+      # this file and out of git.
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      # "True" = the account can look but not save. This database is wiped on
+      # every deploy, so nothing typed into the live admin would survive; set
+      # this to False only once the site has a real database.
+      - key: ADMIN_READONLY
+        value: "True"
