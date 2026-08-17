@@ -1,0 +1,276 @@
+{
+  "slug": "press",
+  "title": "Press / Mediji",
+  "title_en": "Press / Media",
+  "sections": [
+    {
+      "kind": "links",
+      "heading": "Medijske objave",
+      "heading_en": "Media coverage",
+      "order": 0,
+      "items": [
+        {
+          "title": "Eksplozija u \"Montenegro Space Research“ otvara pitanje propusta i zahtijeva hitnu istragu",
+          "reference": "RTCG",
+          "date_label": "20.03.2026",
+          "url": "https://rtcg.me/vijesti/drustvo/825728/eksplozija-u-montenegro-space-research-otvara-pitanje-propusta-i-zahtijeva-hitnu-istragu.html",
+          "file": "",
+          "image": "/press/experiments-chemical-laboratory-ex.jpg",
+          "order": 0
+        },
+        {
+          "title": "Završene regionalne obuke na temu „Zaštita i zdravlje na radu u sistemu obrazovanja i vaspitanja“",
+          "reference": "Vlada Crne Gore",
+          "date_label": "18.12.2025",
+          "url": "https://www.gov.me/clanak/zavrsene-regionalne-obuke-na-temu-zastita-i-zdravlje-na-radu-u-sistemu-obrazovanja-i-vaspitanja",
+          "file": "",
+          "image": "/press/1766058900ibhkiloaqovpgl90-i-747x498.jpg",
+          "order": 1
+        },
+        {
+          "title": "Realizovane radionice na temu zaštite i zdravlja na radu u sistemu obrazovanja i vaspitanja namijenjene predstavnicima poslodavaca i instruktorima praktične nastave",
+          "reference": "Vlada Crne Gore",
+          "date_label": "08.12.2025",
+          "url": "https://www.gov.me/clanak/realizovana-obuka-na-temu-zastite-i-zdravlja-na-radu-u-sistemu-obrazovanja",
+          "file": "",
+          "image": "/press/1765196743jdtjumpfbuub5uey-i-747x498.jpg",
+          "order": 2
+        },
+        {
+          "title": "Jačanje bezbjednosti na radu u poljoprivredi: Održan diseminacioni seminar u okviru projekta SAGRI",
+          "reference": "Biznis CG",
+          "date_label": "18.07.2025",
+          "url": "https://bizniscg.me/jacanje-bezbjednosti-na-radu-u-poljoprivredi-odrzan-diseminacioni-seminar-u-okviru-projekta-sagri/",
+          "file": "",
+          "image": "/press/screenshot-20250718-084318-gmail-1.jpg",
+          "order": 3
+        },
+        {
+          "title": "Održan seminar u okviru projekta SAGRI – predstavljene smjernice za unapređenje zaštite i zdravlja na radu u crnogorskoj poljoprivredi",
+          "reference": "Borba",
+          "date_label": "18.07.2025",
+          "url": "https://borba.me/odrzan-seminar-u-okviru-projekta-sagri-predstavljene-smjernice-za-unapredjenje-zastite-i-zdravlja-na-radu-u-crnogorskoj-poljoprivredi/",
+          "file": "",
+          "image": "/press/screenshot-20250718-084318-gmail-1.jpg",
+          "order": 4
+        },
+        {
+          "title": "Premalo inspektora za kontrolu diskoteka u Crnoj Gori",
+          "reference": "Pobjeda",
+          "date_label": "30.03.2025",
+          "url": "https://www.pobjeda.me/clanak/premalo-inspektora-za-kontrolu-diskoteka",
+          "file": "",
+          "image": "/press/pobjeda-676x423-1.jpg",
+          "order": 5
+        },
+        {
+          "title": "Premalo inspektora za kontrolu diskoteka u Crnoj Gori",
+          "reference": "Standard",
+          "date_label": "30.03.2025",
+          "url": "https://www.standard.co.me/drustvo/premalo-inspektora-za-kontrolu-diskoteka-u-crnoj-gori",
+          "file": "",
+          "image": "/press/cdm-676x375-1.jpg",
+          "order": 6
+        },
+        {
+          "title": "Premalo inspektora za kontrolu diskoteka u Crnoj Gori",
+          "reference": "CDM",
+          "date_label": "30.03.2025",
+          "url": "https://www.cdm.me/drustvo/premalo-inspektora-za-kontrolu-diskoteka-u-crnoj-gori/",
+          "file": "",
+          "image": "/press/cdm-676x375-1.jpg",
+          "order": 7
+        },
+        {
+          "title": "U Crnoj Gori premalo inspektora za kontrolu diskoteka",
+          "reference": "Mondo",
+          "date_label": "30.03.2025",
+          "url": "https://mondo.me/Info/Drustvo/a1295393/U-Crnoj-Gori-premalo-inspektora-za-kontrolu-diskoteka.html",
+          "file": "",
+          "image": "/press/mondo-676x449-1.jpg",
+          "order": 8
+        },
+        {
+          "title": "Mnogi objekti za provod u Crnoj Gori ne ispunjavaju standarde zaštite posjetilaca",
+          "reference": "Sjever CG",
+          "date_label": "21.03.2025",
+          "url": "https://www.sjevercg.me/mnogi-objekti-za-provod-u-crnoj-gori-ne-ispunjavaju-standarde-zastite-posjetilaca/",
+          "file": "",
+          "image": "/press/sjever.webp",
+          "order": 9
+        },
+        {
+          "title": "Tokom ljeta noćni klubovi prenatrpani, mnogi objekti ne ispunjavaju standarde zaštite posjetilaca",
+          "reference": "RTNK",
+          "date_label": "20.03.2025",
+          "url": "https://rtnk.me/drustvo/tokom-ljeta-nocni-klubovi-prenatrpani-mnogi-objekti-ne-ispunjavaju-standarde-zastite-posjetilaca/",
+          "file": "",
+          "image": "/press/rtnk-676x349-1.jpg",
+          "order": 10
+        },
+        {
+          "title": "U \"Linku\" o uslovima zaposlenih u Crnoj Gori",
+          "reference": "RTCG",
+          "date_label": "27.02.2024",
+          "url": "https://rtcg.me/radio/izdvajamo/525090/-u-linku-o-uslovima-zaposlenih-u-crnoj-gori-.html",
+          "file": "",
+          "image": "/press/linkkk-511x900.jpg",
+          "order": 11
+        },
+        {
+          "title": "Organizacije Zapadnog Balkana traže da se radnička i socijalna prava uključe u Berlinski proces",
+          "reference": "Vijesti",
+          "date_label": "11.10.2023",
+          "url": "https://www.vijesti.me/svijet/balkan/677212/organizacije-zapadnog-balkana-traze-da-se-radnicka-i-socijalna-prava-ukljuce-u-berlinski-proces?utm_campaign=vijesti_share_counter&utm_medium=app_ios&utm_source=vijesti_ios",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 12
+        },
+        {
+          "title": "Radnička i socijalna prava da budu imperativ",
+          "reference": "Dan",
+          "date_label": "11.10.2023",
+          "url": "https://www.dan.co.me/vijesti/drustvo/radnicka-i-socijalna-prava-da-budu-imperativ-5202303",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 13
+        },
+        {
+          "title": "Organizacije sa Zapadnog Balkana zahtijevaju da radnička i socijalna prava budu uključena u okvir Berlinskog procesa",
+          "reference": "CDM",
+          "date_label": "11.10.2023",
+          "url": "https://www.cdm.me/ekonomija/organizacije-sa-zapadnog-balkana-zahtijevaju-da-radnicka-i-socijalna-prava-budu-ukljucena-u-okvir-berlinskog-procesa/",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 14
+        },
+        {
+          "title": "Radnička i socijalna prava da budu uključena u okvir Berlinskog procesa",
+          "reference": "RTNK",
+          "date_label": "11.10.2023",
+          "url": "https://rtnk.me/ekonomija/radnicka-i-socijalna-prava-da-budu-ukljucena-u-okvir-berlinskog-procesa/",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 15
+        },
+        {
+          "title": "Radnička i socijalna prava da budu uključena u okvir Berlinskog procesa",
+          "reference": "RTCG",
+          "date_label": "11.10.2023",
+          "url": "https://rtcg.me/vijesti/ekonomija/476776/radnicka-i-socijalna-prava-da-budu-ukljucena-u-okvir-berlinskog-procesa.html",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 16
+        },
+        {
+          "title": "Radnička i socijalna prava budu uključena u okvir Berlinskog procesa",
+          "reference": "MINA",
+          "date_label": "11.10.2023",
+          "url": "https://mina.news/mina-business-ekonomske-vijesti-iz-crne-gore/radnicka-i-socijalna-prava-budu-ukljucena-u-okvir-berlinskog-procesa/",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 17
+        },
+        {
+          "title": "Manifest o dostojanstvenom radu potpisalo 20 ogranizacija sa Zapadnog Balkana",
+          "reference": "Portal Analitika",
+          "date_label": "3.10.2023",
+          "url": "https://www.portalanalitika.me/clanak/manifest-o-dostojanstvenom-radu-potpisalo-20-ogranizacija-sa-zapadnog-balkana",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 18
+        },
+        {
+          "title": "Manifest o dostojanstvenom radu potpisalo dvadeset organizacija iz zemalja Zapadnog Balkana",
+          "reference": "Mašina",
+          "date_label": "3.10.2023",
+          "url": "https://www.masina.rs/manifest-o-dostojanstvenom-radu-potpisalo-dvadeset-organizacija-iz-zemalja-zapadnog-balkana/",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 19
+        },
+        {
+          "title": "Dostojanstven rad",
+          "reference": "FoNet",
+          "date_label": "3.10.2023",
+          "url": "https://fonet.rs/drustvo/36371121/dostojanstven-rad.html",
+          "file": "",
+          "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
+          "order": 20
+        },
+        {
+          "title": "Manifest o dostojanstvenom radu",
+          "reference": "Politika",
+          "date_label": "3.10.2023",
+          "url": "https://www.politika.rs/sr/articles/amp/575281",
+          "file": "",
+          "image": "/press/663z390-radnici-nm.jpg",
+          "order": 21
+        },
+        {
+          "title": "OSIGURANJE OD POVREDA NA RADNOM MJESTU NEDOVOLJNO REGULISANO U CRNOJ GORI: Život košta 6.200 eura",
+          "reference": "CIN CG",
+          "date_label": "7.8.2021",
+          "url": "https://www.cin-cg.me/osiguranje-od-povreda-na-radnom-mjestu-nedovoljno-regulisano-u-crnoj-gori-zivot-kosta-6-200-eura/?fbclid=IwAR3cYAoDubULg5Tfr8zUP6pUfjM2N7A5wL0sQM0NsLGuNJRMYCaLM2qgtC8",
+          "file": "",
+          "image": "/press/untitled-11.jpg",
+          "order": 22
+        },
+        {
+          "title": "SUDSKA PRAKSA NE IDE U PRILOG JAČANJU NIVOA ZAŠTITE I ZDRAVLJA NA RADU: Blage kazne ne podstiču oprez",
+          "reference": "CIN CG",
+          "date_label": "01.08.2021",
+          "url": "https://www.cin-cg.me/sudska-praksa-ne-ide-u-prilog-jacanju-nivoa-zastite-i-zdravlja-na-radu-blage-kazne-ne-podsticu-oprez/?fbclid=IwAR0J-VzrKhg3ukls0HJ3-xEOKrkAstEoDAt6Wcvlf6SbjErBfPptcgCIoJA",
+          "file": "",
+          "image": "/press/untitled222-1.jpg",
+          "order": 23
+        },
+        {
+          "title": "Svaki propust korak ka nesreći",
+          "reference": "Vijesti",
+          "date_label": "9.5.2021",
+          "url": "https://www.vijesti.me/vijesti/drustvo/537499/svaki-propust-korak-ka-nesreci",
+          "file": "",
+          "image": "/press/untitled5547.jpg",
+          "order": 24
+        },
+        {
+          "title": "U organizaciji MOR-a predstavljen Nacionalni profil zaštite i zdravlja na radu Crne Gore",
+          "reference": "MINA",
+          "date_label": "28.4.2021",
+          "url": "https://mina.news/vijesti-iz-crne-gore/u-organizaciji-mor-a-predstavljen-nacionalni-profil-zastite-i-zdravlja-na-radu-crne-gore/",
+          "file": "",
+          "image": "/press/naslovna-fotografija.jpeg",
+          "order": 25
+        },
+        {
+          "title": "Nacionalni profil zaštite i zdravlja na radu Crne Gore",
+          "reference": "MINA",
+          "date_label": "28.4.2021",
+          "url": "https://mina.news/mina-servisi/mina-foto-nacionalniprofil-zastite-i-zdravlja-na-radu-crne-gore/",
+          "file": "",
+          "image": "/press/ers-6500.jpeg",
+          "order": 26
+        },
+        {
+          "title": "Godišnje umre 80.000 radnika od kancera zbog uslova rada",
+          "reference": "Vijesti",
+          "date_label": "25.10.2018",
+          "url": "https://www.vijesti.me/vijesti/ekonomija/16166/godisnje-umre-80-000-radnika-od-kancera-zbog-uslova-rada-65bb56dd",
+          "file": "",
+          "image": "/press/untitled-10.jpg",
+          "order": 27
+        },
+        {
+          "title": "UZNRCG predstavljeno na biltenu Sajma bezbjednosti",
+          "reference": "UZNR",
+          "date_label": "",
+          "url": "https://uznr.me/wp-content/uploads/2025/06/UZNRCG-predstavljenonabiltenuSajmaBezbjednosti.docx.pdf",
+          "file": "",
+          "image": "/press/aaa-2.jpg",
+          "order": 28
+        }
+      ]
+    }
+  ]
+}

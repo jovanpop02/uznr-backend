@@ -149,11 +149,80 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': ['rest_framework.throttling.ScopedRateThrottle'],
+    # Only the contact endpoint is throttled; read-only list views have no scope
+    # and stay unlimited. The window is generous for a human filling in a form
+    # and tight enough that a script cannot flood the office inbox.
+    'DEFAULT_THROTTLE_RATES': {
+        'contact': os.environ.get('CONTACT_THROTTLE_RATE', '5/hour'),
+    },
+}
+
+
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+# With no EMAIL_HOST configured, mail is printed to the console instead of being
+# sent. That keeps local development and CI from needing credentials, and makes
+# a missing production configuration loud (nothing arrives) rather than silent.
+#
+# Lowercase on purpose: Django 6 refuses to start if a deprecated EMAIL_* module
+# level setting is defined alongside MAILERS, and any UPPERCASE name here counts
+# as one.
+_email_host = os.environ.get('EMAIL_HOST', '')
+
+if _email_host:
+    MAILERS = {
+        'default': {
+            'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+            'OPTIONS': {
+                'host': _email_host,
+                'port': int(os.environ.get('EMAIL_PORT', '587')),
+                'username': os.environ.get('EMAIL_HOST_USER', ''),
+                'password': os.environ.get('EMAIL_HOST_PASSWORD', ''),
+                'use_tls': os.environ.get('EMAIL_USE_TLS', 'True') == 'True',
+                'use_ssl': os.environ.get('EMAIL_USE_SSL', 'False') == 'True',
+                'timeout': 20,
+            },
+        },
+    }
+else:
+    MAILERS = {
+        'default': {
+            'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        },
+    }
+
+# Must be an address the SMTP account is allowed to send as, or providers will
+# reject the message or file it as spam.
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'UZNR <info@uznr.me>')
+
+# Where contact-form messages are forwarded. Comma-separated.
+CONTACT_NOTIFY_EMAILS = [
+    address.strip()
+    for address in os.environ.get('CONTACT_NOTIFY_EMAILS', 'info@uznr.me').split(',')
+    if address.strip()
+]
+
+# Shown in the footer of outgoing mail.
+CONTACT_OFFICE_EMAIL = os.environ.get('CONTACT_OFFICE_EMAIL', 'info@uznr.me')
+CONTACT_OFFICE_PHONE = os.environ.get('CONTACT_OFFICE_PHONE', '+382 67 412 900')
+
+# Public site (frontend) and this backend, used to build links inside e-mails.
+SITE_URL = os.environ.get('SITE_URL', 'https://uznr.netlify.app')
+BACKEND_URL = os.environ.get('BACKEND_URL', 'http://localhost:8000')
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        # Mail failures are caught so a submission is never lost; without this
+        # they would be swallowed entirely.
+        'content': {'handlers': ['console'], 'level': 'INFO'},
     },
 }

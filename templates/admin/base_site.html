@@ -4,6 +4,15 @@
 {% block extrastyle %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'admin/css/custom_admin.css' %}">
+{% comment %}
+Drives the drag-to-reorder tables. Loaded for the whole admin because the inline
+version runs on change forms, not only on the lists that save via reorder/.
+{% endcomment %}
+<script src="{% static 'admin/js/reorder.js' %}" defer></script>
+{% comment %}
+Warns before leaving a change form with edits that were never saved.
+{% endcomment %}
+<script src="{% static 'admin/js/unsaved.js' %}" defer></script>
 {% endblock %}
 
 {% block branding %}

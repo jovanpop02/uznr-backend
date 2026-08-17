@@ -1,0 +1,92 @@
+{
+  "slug": "pitanja-odgovori",
+  "title": "Pitanja i odgovori",
+  "title_en": "Questions and answers",
+  "sections": [
+    {
+      "kind": "faq",
+      "heading": "Najčešća pitanja",
+      "heading_en": "Frequently asked questions",
+      "order": 0,
+      "items": [
+        {
+          "title": "Šta podrazumijeva zaštita i zdravlje na radu?",
+          "description": "Zaštita i zdravlje na radu podrazumijeva obezbjeđivanje uslova na radu koji ne dovode do povreda na radu, profesionalnih bolesti i bolesti u vezi sa radom i koji stvaraju pretpostavke za punu fizičku i psihičku zaštitu zaposlenih.",
+          "url": "",
+          "file": "",
+          "order": 0
+        },
+        {
+          "title": "Kada i na koji način se obavlja osposobljavanje zaposlenih za bezbjedan rad?",
+          "description": "Poslodavac je dužan da izvrši osposobljavanje zaposlenog kod zasnivanja radnog odnosa, raspoređivanja na drugo radno mjesto, uvođenja nove tehnologije, uvođenja novih ili zamjene sredstava za rad, promjene procesa rada i ponovnog raspoređivanja na rad poslije odsustvovanja koje je trajalo duže od godinu dana.",
+          "url": "",
+          "file": "",
+          "order": 1
+        },
+        {
+          "title": "Koja su prava i obaveze zaposlenih?",
+          "description": "Zaposleni ima pravo i obavezu da se prije početka rada upozna sa mjerama zaštite i zdravlja na radu na poslovima radnog mjesta na koje je raspoređen, kao i da se osposobljava za njihovo sprovođenje. Zaposleni ima pravo i obavezu da poslodavcu daje predloge, primjedbe i obavještenja o pitanjima zaštite i zdravlja na radu. Zaposleni ima pravo i obavezu da obavi zdravstveni pregled koji odgovara riziku za zaštitu i zdravlje na radnom mjestu, na koji ga upućuje poslodavac, u skladu sa propisima o zaštiti i zdravlju na radu i propisima iz oblasti zdravstvene zaštite.",
+          "url": "",
+          "file": "",
+          "order": 2
+        },
+        {
+          "title": "Koje su obaveze poslodavca?",
+          "description": "Poslodavac je dužan da obezbijedi mjere zaštite i zdravlja na radu sprječavanjem, uklanjanjem i kontrolom rizika na radu, obavještavanjem i osposobljavanjem zaposlenih za bezbjedan i zdrav rad, uz odgovarajuću organizaciju i potrebna sredstva. Poslodavac je, takođe, dužan da se prilikom planiranja i uvođenja novih tehnologija konsultuje sa zaposlenima ili njihovim predstavnicima za zaštitu i zdravlje na radu o pitanjima izbora sredstava za rad, uslova rada, radne sredine i njihovih posljedica za zaštitu i zdravlje na radu.",
+          "url": "",
+          "file": "",
+          "order": 3
+        },
+        {
+          "title": "Ko vrši informisanje zaposlenih o riziku i mjerama zaštite i na koji način?",
+          "description": "Poslodavac je dužan da zaposlenog ili predstavnika zaposlenih informiše pisanim putem u vezi sa:\n\n- rizicima po zaštitu i zdravlje na radu, prevenciji, mjerama zaštite i zdravlja na radu i aktivnostima u odnosu na svaku vrstu radnog mjesta i/ili posla;\n- načinom organizovanja i pružanja prve pomoći, zaštite od požara, postupku evakuacije zaposlenih pri pojavi ozbiljnih i neposrednih opasnosti i o licima koja su zadužena za sprovođenje ovih mjera.",
+          "url": "",
+          "file": "",
+          "order": 4
+        },
+        {
+          "title": "Šta treba uraditi u slučaju povrede na radu?",
+          "description": "U slučajevima nastanka povrede na radu, zaposleni koji se zatekne na mjestu nastanka povrede, svjedok događaja, dužan je da povrijeđenom ukaže pomoć i da obavijesti prvog pretpostavljenog povrijeđenom. Ukoliko je povrijeđeni sam i svjestan, dužan je da o povredi obavijesti pretpostavljenog. Pretpostavljeni povrijeđenom je dužan da o povredi obavijesti dežurnu službu preduzeća. Dežurna služba angažuje vozača sanitetskog vozila koji preuzima medicinskog tehničara iz ambulante i ide na mjesto dešavanja povrede, radi blagovremene stručne pomoći u cilju zbrinjavanja povrijeđenog.",
+          "url": "",
+          "file": "",
+          "order": 5
+        },
+        {
+          "title": "Kome i kada poslodavac prijavljuje povredu na radu?",
+          "description": "Poslodavac je dužan da odmah, a najkasnije u roku od 24 sata od nastanka, pisano prijavi Inspekciji rada svaku smrtnu, kolektivnu, tešku i drugu povredu na radu, koja uzrokuje odsustvo zaposlenog sa rada duže od tri radna dana, kao i opasnu pojavu koja bi mogla da ugrozi zaštitu i zdravlje zaposlenih.",
+          "url": "",
+          "file": "",
+          "order": 6
+        },
+        {
+          "title": "Ko vrši nadzor nad sprovođenjem zaštite i zdravlja na radu?",
+          "description": "Inspekcijski nadzor nad sprovođenjem Zakona o zaštiti i zdravlju na radu, propisa donijetih na osnovu njega i tehničkim i drugim mjerama koje se odnose na zaštitu i zdravlje na radu vrši Inspekcija rada, preko inspektora rada za oblast zaštite i zdravlja na radu.",
+          "url": "",
+          "file": "",
+          "order": 7
+        },
+        {
+          "title": "Da li i kada zaposleni ima pravo da odbije rad?",
+          "description": "Zaposleni ima pravo da odbije da radi, ako:\n\n- prethodno nije upoznat sa svim opasnostima ili štetnostima, odnosno rizicima na radu ili ako mu poslodavac nije obezbijedio propisani zdravstveni pregled;\n- prijeti neposredna opasnost po život i zdravlje zbog toga što nijesu sprovedene propisane mjere zaštite i zdravlja na radu, sve dok se te mjere ne obezbijede;\n- na sredstvu za rad nijesu obezbijeđene propisane mjere zaštite i zdravlja na radu i time mu je neposredno ugrožen život i zdravlje.",
+          "url": "",
+          "file": "",
+          "order": 8
+        },
+        {
+          "title": "Šta je akt o procjeni rizika?",
+          "description": "Akt o procjeni rizika je akt koji sadrži opis procesa rada sa procjenom (ocjenom) rizika od povreda na radu, profesionalnih bolesti i bolesti u vezi sa radom i kojim se utvrđuju mjere zaštite i zdravlja na radu u cilju poboljšanja zaštite i zdravlja na radu.\n\nU aktu o procjeni rizika poslodavac određuje radna mjesta sa povećanim rizikom, odnosno posebnim uslovima rada, zdravstvene zahtjeve za određeni rad koje moraju da ispunjavaju zaposleni u radnom procesu ili za korišćenje pojedinih sredstava za rad na osnovu stručne ocjene ovlašćene ustanove za zdravstvenu zaštitu zaposlenih.\n\nAktom iz stava 1 ovog člana utvrđuje se:\n\n- identifikacija, odnosno otkrivanje opasnosti;\n- koja radna mjesta su izložena identifikovanim opasnostima;\n- vjerovatnoća nastanka povrede na radu, profesionalne bolesti, odnosno bolesti u vezi sa radom;\n- da li je rizik prihvatljiv;\n- uvođenje mjera za smanjenje neprihvatljivog rizika.",
+          "url": "",
+          "file": "",
+          "order": 9
+        },
+        {
+          "title": "Šta su radna mjesta sa posebnim uslovima rada?",
+          "description": "Radna mjesta sa posebnim uslovima rada su radna mjesta na koja mogu biti raspoređeni i obavljati poslove tih radnih mjesta samo zaposleni koji, pored opštih uslova za zasnivanje radnog odnosa, ispunjavaju i posebne uslove u pogledu pola, godina života, školske spreme, stručne osposobljenosti, zdravstvenog stanja i psihičkih sposobnosti.\n\nPoslodavac ne može rasporediti zaposlenog da radi na radnom mjestu sa posebnim uslovima rada, ukoliko prethodno nije utvrdio da zaposleni ispunjava propisane posebne uslove.",
+          "url": "",
+          "file": "",
+          "order": 10
+        }
+      ]
+    }
+  ]
+}

@@ -7,6 +7,8 @@ from django.views.static import serve
 admin.site.site_header = 'UZNR administracija'
 admin.site.site_title = 'UZNR admin'
 admin.site.index_title = 'Upravljanje sadržajem'
+# Adds the orientation panel above the model list on the admin home page.
+admin.site.index_template = 'admin/uznr_index.html'
 
 
 urlpatterns = [

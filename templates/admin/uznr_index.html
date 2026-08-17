@@ -1,0 +1,29 @@
+{% extends "admin/index.html" %}
+{% comment %}
+The admin home page, with a short orientation panel above the model list.
+
+Named uznr_index rather than index so that the extends above still resolves to
+Django's own template instead of recursing into this one. Wired up in
+config/urls.py via admin.site.index_template.
+{% endcomment %}
+
+{% block content %}
+  <div class="uznr-guide">
+    <h2>Kako se koristi</h2>
+    <p>
+      Ovdje se uređuje sadržaj sajta — tekstovi, vijesti, dokumenti i fotografije.
+      Izgled sajta se ne mijenja odavde; ovo je sadržaj koji sajt prikazuje.
+    </p>
+    <ul>
+      <li><strong>Izmjene su odmah vidljive.</strong> Kada sačuvate, dovoljno je osvježiti stranicu na sajtu.</li>
+      <li><strong>Uhvatite red i povucite ga</strong> gore ili dolje da promijenite kojim se redom stvari prikazuju na sajtu. U spiskovima se čuva odmah, a unutar stranice kada pritisnete „Sačuvaj“.</li>
+      <li><strong>Engleska verzija</strong> je sklonjena u dio „Engleska verzija“ na dnu forme. Ako je ostavite praznu, na engleskom sajtu se prikazuje crnogorski tekst.</li>
+      <li><strong>Dokumenti i fotografije</strong> se otpremaju direktno u formi — nije potreban poseban program.</li>
+      <li><strong>Brisanje je trajno.</strong> Da nešto privremeno sklonite sa sajta, koristite „Prikazano“ ili „Aktivan“ umjesto brisanja.</li>
+    </ul>
+    <p class="uznr-guide__foot">
+      Ispod je spisak svega što se može uređivati. Uz svaku stavku piše šta je i gdje se prikazuje na sajtu.
+    </p>
+  </div>
+  {{ block.super }}
+{% endblock %}

@@ -4,7 +4,10 @@ services:
     runtime: python
     plan: free
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
-    startCommand: "python manage.py migrate && (python manage.py import_seed &) && gunicorn config.wsgi --log-file -"
+    # import_projekti_biblioteka is idempotent — it matches blocks by heading and
+    # documents by address — so it fills a fresh database and is a no-op on every
+    # later restart, leaving anything edited in the admin untouched.
+    startCommand: "python manage.py migrate && python manage.py import_pages && python manage.py import_projekti_biblioteka --apply && (python manage.py import_seed &) && gunicorn config.wsgi --log-file -"
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -16,3 +19,27 @@ services:
         value: "https://uznr.netlify.app"
       - key: PYTHON_VERSION
         value: "3.13.0"
+
+      # Contact form e-mail. Without EMAIL_HOST the backend prints mail to the
+      # log instead of sending it, so the form keeps working (messages are still
+      # saved and visible in the admin) but nobody is notified.
+      # Set the credentials in the Render dashboard, not here.
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: EMAIL_USE_TLS
+        value: "True"
+      # Must be an address the SMTP account may send as, or mail is rejected.
+      - key: DEFAULT_FROM_EMAIL
+        value: "UZNR <info@uznr.me>"
+      - key: CONTACT_NOTIFY_EMAILS
+        value: "info@uznr.me"
+      - key: SITE_URL
+        value: "https://uznr.netlify.app"
+      - key: BACKEND_URL
+        sync: false
