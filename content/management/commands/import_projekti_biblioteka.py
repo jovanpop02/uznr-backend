@@ -22,9 +22,10 @@ from django.db import transaction
 
 from content.models import Page, PageSection, SectionItem
 
+#: dump key -> (page slug, Montenegrin title, English title)
 PAGES = {
-    'projekti': 'projekti',
-    'biblioteka': 'biblioteka',
+    'projekti': ('projekti', 'Projekti', 'Projects'),
+    'biblioteka': ('biblioteka', 'Biblioteka', 'Library'),
 }
 
 
@@ -57,24 +58,31 @@ class Command(BaseCommand):
 
         data = json.loads(path.read_text(encoding='utf-8'))
 
-        for key, slug in PAGES.items():
+        for key, (slug, title, title_en) in PAGES.items():
             blocks = data.get(key)
             if not blocks:
                 self.stdout.write(self.style.WARNING(f'U dampu nema „{key}“ — preskačem.'))
                 continue
             self.stdout.write(self.style.MIGRATE_HEADING(f'\n{slug.upper()}'))
-            self.import_page(slug, blocks, options['apply'], options['list'])
+            self.import_page(slug, title, title_en, blocks, options['apply'], options['list'])
 
         if not options['apply'] and not options['list']:
             self.stdout.write(self.style.WARNING(
                 '\nNije sačuvano. Pokrenite ponovo sa --apply.'
             ))
 
-    def import_page(self, slug, blocks, apply, list_only):
-        try:
-            page = Page.objects.get(slug=slug)
-        except Page.DoesNotExist:
-            raise CommandError(f'Stranica „{slug}“ ne postoji u bazi.')
+    def import_page(self, slug, title, title_en, blocks, apply, list_only):
+        # The page itself is created if missing. On Render the database is
+        # rebuilt from scratch on every deploy and `import_pages` only knows
+        # about the pages that have a seed file, so insisting the page already
+        # exists would fail the boot rather than fill it in.
+        page = Page.objects.filter(slug=slug).first()
+        if page is None:
+            if list_only or not apply:
+                self.stdout.write(f'  (stranica „{slug}“ bi bila napravljena)')
+                page = None
+            else:
+                page = Page.objects.create(slug=slug, title=title, title_en=title_en)
 
         created_blocks = created_items = skipped_items = 0
 
@@ -86,7 +94,13 @@ class Command(BaseCommand):
             if list_only:
                 continue
 
-            section = PageSection.objects.filter(page=page, heading=heading).first()
+            # page is None only on a dry run for a page that does not exist yet,
+            # in which case every block below counts as new.
+            section = (
+                PageSection.objects.filter(page=page, heading=heading).first()
+                if page is not None
+                else None
+            )
             if section is None:
                 created_blocks += 1
                 if apply:

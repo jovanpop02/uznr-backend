@@ -7,7 +7,10 @@ services:
     # import_projekti_biblioteka is idempotent — it matches blocks by heading and
     # documents by address — so it fills a fresh database and is a no-op on every
     # later restart, leaving anything edited in the admin untouched.
-    startCommand: "python manage.py migrate && python manage.py import_pages && python manage.py import_projekti_biblioteka --apply && (python manage.py import_seed &) && gunicorn config.wsgi --log-file -"
+    # The seeding steps use `;` and `|| true` rather than `&&`: this database is
+    # rebuilt from nothing on every deploy, and a seed that fails must cost its
+    # own content, never the boot. gunicorn has to start either way.
+    startCommand: "python manage.py migrate && python manage.py import_pages; python manage.py import_projekti_biblioteka --apply || true; (python manage.py import_seed &) ; gunicorn config.wsgi --log-file -"
     envVars:
       - key: SECRET_KEY
         generateValue: true
