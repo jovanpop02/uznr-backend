@@ -48,8 +48,9 @@ services:
         sync: false
 
       # Admin account, created at boot because the free plan has no shell.
-      # Set the values in the Render dashboard; sync:false keeps them out of
-      # this file and out of git.
+      # Without these it falls back to admin/123, the same login as local
+      # development. That password is in a public repository, which is part of
+      # why the account is view-only; set ADMIN_PASSWORD here to override it.
       - key: ADMIN_USERNAME
         sync: false
       - key: ADMIN_PASSWORD

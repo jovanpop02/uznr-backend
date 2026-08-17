@@ -4,11 +4,18 @@ Render's free plan has no shell, so `createsuperuser` cannot be typed anywhere.
 This runs as part of the start command instead and reads the credentials from
 the service's environment, where they belong anyway.
 
-    ADMIN_USERNAME   required — without it the command does nothing
-    ADMIN_PASSWORD   required
+    ADMIN_USERNAME   defaults to "admin"
+    ADMIN_PASSWORD   defaults to "123"
     ADMIN_EMAIL      optional
     ADMIN_READONLY   "True" (default) for an account that can look but not
                      touch; "False" for a full superuser
+
+The defaults match the local development login so there is one set of details
+to remember, and they let the live admin work without anything being typed into
+the Render dashboard. They are also in a public repository, so the default
+password is public knowledge: the account is view-only for that reason, and
+setting ADMIN_PASSWORD in the Render environment overrides it at the next
+deploy. Do that before turning ADMIN_READONLY off.
 
 Read-only is the default on purpose. This database is rebuilt from the seed
 files on every deploy, so anything typed into the live admin is lost the next
@@ -32,16 +39,10 @@ class Command(BaseCommand):
     help = 'Pravi administratorski nalog iz env varijabli (za servise bez shell-a).'
 
     def handle(self, *args, **options):
-        username = os.environ.get('ADMIN_USERNAME', '').strip()
-        password = os.environ.get('ADMIN_PASSWORD', '').strip()
+        username = os.environ.get('ADMIN_USERNAME', '').strip() or 'admin'
+        password = os.environ.get('ADMIN_PASSWORD', '').strip() or '123'
         email = os.environ.get('ADMIN_EMAIL', '').strip()
         readonly = os.environ.get('ADMIN_READONLY', 'True') != 'False'
-
-        if not username or not password:
-            self.stdout.write(
-                'ADMIN_USERNAME/ADMIN_PASSWORD nisu postavljeni — nalog se ne pravi.'
-            )
-            return
 
         User = get_user_model()
         user, created = User.objects.get_or_create(
